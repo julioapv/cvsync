@@ -4,6 +4,7 @@ type CVData = {
       name: string
       email: string
       phone: string
+      address: string
     }
     jobs: {
       title: string
@@ -24,6 +25,7 @@ const initialCVData: CVData = {
       name: "John Doe",
       email: "john.doe@example.com",
       phone: "+1 234 567 890",
+      address: "Cologne, Germany"
     },
     jobs: [
       {
@@ -47,6 +49,7 @@ const PersonalInfo = () => {
     return (
         <div className="mb-6">
         <h3 className="text-xl font-semibold mb-2">Personal Information</h3>
+        <label htmlFor="name">Name</label>
         <input
           type="text"
           name="name"
@@ -55,6 +58,8 @@ const PersonalInfo = () => {
           placeholder="Full Name"
           className="w-full p-2 mb-2 border rounded"
         />
+        
+        <label htmlFor="email">Email</label>
         <input
           type="email"
           name="email"
@@ -63,10 +68,22 @@ const PersonalInfo = () => {
           placeholder="Email"
           className="w-full p-2 mb-2 border rounded"
         />
+
+        <label htmlFor="phone">Phone</label>
         <input
           type="tel"
           name="phone"
           value={initialCVData.personal.phone}
+        //   onChange={handlePersonalChange}
+          placeholder="Phone"
+          className="w-full p-2 mb-2 border rounded"
+        />
+
+        <label htmlFor="phone">Address</label>
+        <input
+          type="text"
+          name="address"
+          value={initialCVData.personal.address}
         //   onChange={handlePersonalChange}
           placeholder="Phone"
           className="w-full p-2 mb-2 border rounded"

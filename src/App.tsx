@@ -60,13 +60,12 @@ const CVGenerator: React.FC = () => {
         <EduInfo/>
         <JobExp />
         <ButtonAct />
-        {/* Add more sections for jobs and education here */}
       </div>
 
       {/* Right side - Preview Section */}
       <div className="w-full lg:w-1/2 p-6 bg-gray-200 overflow-y-auto">
         <h2 className="text-2xl font-bold mb-4">CV Preview</h2>
-        <div className="bg-white p-6 rounded shadow-md">
+        <div className="bg-white h-4/5 p-6 rounded shadow-md">
           <h3 className="text-2xl font-bold mb-2">{initialCVData.personal.name}</h3>
           <p className="mb-1">{initialCVData.personal.email}</p>
           <p className="mb-4">{initialCVData.personal.phone}</p>
