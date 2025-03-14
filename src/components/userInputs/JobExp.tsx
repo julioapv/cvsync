@@ -1,48 +1,48 @@
-type CVData = {
-    personal: {
-      name: string
-      email: string
-      phone: string
-      address: string
-    }
-    jobs: {
-      title: string
-      company: string
-      startDate: string
-      endDate: string
-      description: string
-    }[]
-    education: {
-      degree: string
-      institution: string
-      graduationYear: string
-    }[]
-  }
+// type CVData = {
+//     personal: {
+//       name: string
+//       email: string
+//       phone: string
+//       address: string
+//     }
+//     jobs: {
+//       title: string
+//       company: string
+//       startDate: string
+//       endDate: string
+//       description: string
+//     }[]
+//     education: {
+//       degree: string
+//       institution: string
+//       graduationYear: string
+//     }[]
+//   }
 
-const initialCVData: CVData = {
-    personal: {
-      name: "John Doe",
-      email: "john.doe@example.com",
-      phone: "+1 234 567 890",
-      address: "Cologne, Germany"
-    },
-    jobs: [
-      {
-        title: "Software Engineer",
-        company: "Tech Corp",
-        startDate: "2020-01",
-        endDate: "Present",
-        description: "Developed and maintained web applications using React and Node.js",
-      },
-    ],
-    education: [
-      {
-        degree: "Bachelor of Science in Computer Science",
-        institution: "University of Technology",
-        graduationYear: "2019",
-      },
-    ],
-  }
+// const initialCVData: CVData = {
+//     personal: {
+//       name: "John Doe",
+//       email: "john.doe@example.com",
+//       phone: "+1 234 567 890",
+//       address: "Cologne, Germany"
+//     },
+//     jobs: [
+//       {
+//         title: "Software Engineer",
+//         company: "Tech Corp",
+//         startDate: "2020-01",
+//         endDate: "Present",
+//         description: "Developed and maintained web applications using React and Node.js",
+//       },
+//     ],
+//     education: [
+//       {
+//         degree: "Bachelor of Science in Computer Science",
+//         institution: "University of Technology",
+//         graduationYear: "2019",
+//       },
+//     ],
+//   }
 
 const JobExp = () => {
     return (
