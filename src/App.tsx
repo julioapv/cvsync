@@ -88,7 +88,10 @@ const CVGenerator: React.FC = () => {
           educationInfo={cvData.education[0]}
           updateEducation={updateEducation}
         />
-        <JobExp />
+        <JobExp 
+          workExpInfo={cvData.jobs[0]}
+          updateWorkExp={updateWorkExp}
+        />
 
 
         <ButtonAct onSubmit={() => console.log("ping")
