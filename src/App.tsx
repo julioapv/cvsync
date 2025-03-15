@@ -4,10 +4,9 @@ import { useState } from "react"
 import { CVData } from "./types/CVData"
 import { PersonalInfo } from "./components/userInputs/PersonalInfo"
 import { EduInfo } from "./components/userInputs/EduInfo"
-// import { JobExp } from "./components/userInputs/JobExp"
+import { JobExp } from "./components/userInputs/JobExp"
 import { ButtonAct } from "./components/userInputs/ButtonAct"
 
-// Mock data for initial state
 const initialCVData: CVData = {
   personal: {
     name: "John Doe",
@@ -37,38 +36,22 @@ const CVGenerator: React.FC = () => {
 
   const [cvData, setCvData] = useState<CVData>(initialCVData);
 
-  const updateCVData = (
-    section: keyof typeof cvData,
-    field: keyof CVData[keyof CVData],
-    value: any,
+  const updatePersonal = (
+    field: keyof CVData['personal'],
+    value: string,
   ) => {
     setCvData((prevData) => ({
       ...prevData,
-      [section]: {
-        ...prevData[section],
+      personal: {
+        ...prevData.personal,
         [field]: value,
       },
     }));
   };
-  
-
-  const updatePersonal = (
-    field: "name" | "email" | "phone" | "address",
-    value: any,
-  ) => {
-    updateCVData("personal", field, value);
-  }
-
-  // const updateEducation = (
-  //   field: "institution" | "degree" | "graduationYear",
-  //   value: any,
-  // ) => {
-  //   updateCVData("education", field, value);
-  // }
 
   const updateEducation = (
     field: keyof CVData['education'][0],
-    value: any,
+    value: string,
   ) => {
     setCvData((prevData) => ({
       ...prevData,
@@ -77,7 +60,18 @@ const CVGenerator: React.FC = () => {
       )
     }));
   };
-  
+
+  const updateWorkExp = (
+    field: keyof CVData['jobs'][0],
+    value: string,
+  ) => {
+    setCvData((prevData) => ({
+      ...prevData,
+      jobs: prevData.jobs.map((jobs, index) => 
+        index === 0 ? { ...jobs, [field]: value } : jobs
+      )
+    }))
+  }
 
   return (
 
@@ -94,7 +88,9 @@ const CVGenerator: React.FC = () => {
           educationInfo={cvData.education[0]}
           updateEducation={updateEducation}
         />
-        {/* <JobExp /> */}
+        <JobExp />
+
+
         <ButtonAct onSubmit={() => console.log("ping")
         }/>
       </div>
@@ -108,8 +104,17 @@ const CVGenerator: React.FC = () => {
           <p className="mb-1">{cvData.personal.email}</p>
           <p className="mb-4">{cvData.personal.phone}</p>
 
-          {/* <h4 className="text-xl font-semibold mb-2">Work Experience</h4>
-          {initialCVData.jobs.map((job, index) => (
+          <h4 className="text-xl font-semibold mb-2">Education</h4>
+          {cvData.education.map((edu, index) => (
+            <div key={index} className="mb-4">
+              <h5 className="font-semibold">{edu.degree}</h5>
+              <p>{edu.institution}</p>
+              <p>Graduated: {edu.graduationYear}</p>
+            </div>
+          ))}
+
+          <h4 className="text-xl font-semibold mb-2">Work Experience</h4>
+          {cvData.jobs.map((job, index) => (
             <div key={index} className="mb-4">
               <h5 className="font-semibold">{job.title}</h5>
               <p>{job.company}</p>
@@ -118,16 +123,8 @@ const CVGenerator: React.FC = () => {
               </p>
               <p>{job.description}</p>
             </div>
-          ))} */}
-
-          <h4 className="text-xl font-semibold mb-2">Education</h4>
-          {initialCVData.education.map((edu, index) => (
-            <div key={index} className="mb-4">
-              <h5 className="font-semibold">{edu.degree}</h5>
-              <p>{edu.institution}</p>
-              <p>Graduated: {edu.graduationYear}</p>
-            </div>
           ))}
+
         </div>
       </div>
     </div>

@@ -9,7 +9,7 @@ interface PersonalInformationProps {
   };
   updatePersonal: (
     field: keyof CVData['personal'],
-    value: any,
+    value: string,
   ) => void;
 }
 const PersonalInfo = ({ personalInfo, updatePersonal }: PersonalInformationProps) => {
